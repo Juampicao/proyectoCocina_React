@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { ProductButtons, ProductCardFinal, ProductPrice, ProductState, ProductTitle } from "../components";
 import { ProductChangeState } from "../components/ProductChangeState";
-import { products } from "../data/products";
+import { productsList } from "../data/products";
 import { useShoppingCart } from "../hooks/useShoppingCart";
 import "../styles/custom-styles.css";
 import "../styles/styles.module.css";
@@ -19,13 +19,10 @@ export const ShoppingPage = () => {
   return (
         <div className="grid gap-y-10 bg-red">
             
-          {/* <div style={({ display: "flex", flexDirection: "row", flexWrap: "wrap" })}> */}
-          
-          
             {/* CAJA */}
             <div>
             <h1 className="text-xl text-blue-500 font-bold"> Caja </h1>
-            {products?.map(product => (
+            {productsList?.map(product => (
     
                 <ProductCardFinal
                     className="bg-dark text-white"
@@ -34,7 +31,6 @@ export const ShoppingPage = () => {
                     onChange={onProductCountChange}
                     value={ shoppingCart[product.id]?.count || 0 }
                 >
-                    {/* <ProductImage className="custom-image"/> */}
                     <ProductPrice />
                     <ProductTitle  className="text-white bg-dark" /> 
                     <ProductButtons className="custom-buttons" />
@@ -48,33 +44,9 @@ export const ShoppingPage = () => {
             <div className="shopping-cart">
                 <h1 className="text-xl text-blue-500 font-bold"> Cocina </h1>
 
-              {/* {pedidosPreparacion.map((product) => (
-                        <ProductCardFinal
-                            product={product}
-                            key={2}
-                            className="bg-dark text-white"
-                            
-                            //Delete or comment onChange & value for not give control to the child. 
-                            // onChange={onProductCountChange} 
-                            value={product.count}
-                        >
-                            <ProductState/>
-                            <ProductTitle
-                                className="text-white bg-dark"
-                                title={product.title}
-                                subtitle={`Cantidad: ${product.count}`}
-                            /> 
-                            <ProductButtons className="custom-buttons"
-                            style={{
-                                display: "flex",
-                                justifyContent: "center"
-                                }}
-                                />
-                            <ProductChangeState/>
-                        </ProductCardFinal>
-                    ))} */}
+    
                 {
-                    Object.entries( shoppingCart).map(([key, product]) => (
+                    Object.entries( pedidosPreparacion).map(([key, product]) => (
                         
                         <ProductCardFinal
                             product={product}
@@ -91,12 +63,7 @@ export const ShoppingPage = () => {
                                 title={product.title}
                                 subtitle={`Cantidad: ${product.count}`}
                             /> 
-                            {/* <ProductButtons className="custom-buttons"
-                            style={{
-                                display: "flex",
-                                justifyContent: "center"
-                                }}
-                                /> */}
+                           
                             <ProductChangeState/>
                         </ProductCardFinal>
                     ))
@@ -104,8 +71,9 @@ export const ShoppingPage = () => {
               </div>
              {/* COCINA */}
               
-             {/* ENTREGAS */}
           
+
+             {/* ENTREGAS */}
             <div>
               <h1 className="font-bold text-xl text-blue-500"> Entregas</h1>
               <h2 className="font-bold"> Pedidos Terminados</h2>

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Product, ProductInCart } from "../interfaces/interfaces"
+import { Product, ProductInCart, ProductOrdered } from "../interfaces/interfaces"
 
 export const useShoppingCart = () => {
     
@@ -9,7 +9,7 @@ export const useShoppingCart = () => {
     const [pedidosPreparacion, setPedidosPreparacion] = useState< Product[] >([])
     
 
-    const onProductCountChange = ({count, product} : {count: number, product:Product}) => {
+    const onProductCountChange = ({count, product} : {count: number, product:ProductOrdered}) => {
 
         console.log("[onProductCountChangeFn] Count:", count, product)
 

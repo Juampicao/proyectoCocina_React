@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { onChangeArgs, Product } from "../interfaces/interfaces"
+import { onChangeArgs, ProductOrdered } from "../interfaces/interfaces"
 
 interface useProductArgs {
-    product: Product,
+    product: ProductOrdered,
     onChange?: (args: onChangeArgs) => void,
     value?: number
 }
