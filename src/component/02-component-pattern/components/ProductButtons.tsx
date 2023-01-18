@@ -1,7 +1,7 @@
 import { useContext } from "react";
+import "../styles/custom-styles.css";
 import { ProductContext } from "./ProductCardFinal";
 
-import styles from "../styles/styles.module.css";
 
 export interface IProductButtonsProps{
     className?: string,
@@ -10,20 +10,41 @@ export interface IProductButtonsProps{
 //  Product Button
 export const ProductButtons = ({className, style} : IProductButtonsProps) => {
     
-    const { increaseBy, counter, product } = useContext(ProductContext)
-
+    const { increaseBy, counter, product, changeProductState } = useContext(ProductContext)
+    
     return (
-          <div className={`${styles.buttonsContainer} ${className} `}  style={style} >
-              <button className={styles.buttonMinus} onClick={() => increaseBy(-1)} >
-                  -
-              </button>
-              <div className={styles.countLabel}>
-                  {counter}
-              </div>
-                <button className={styles.buttonAdd} onClick={() => increaseBy(+1)} >
+        <div className="parentProductButtons">
+
+          <div className={` ${className} productButtons`}  style={style} >
+            <button  onClick={() =>  increaseBy(-1)} >
+                -
+            </button>
+            <div >
+                {counter}
+            </div>
+            <button onClick={() => increaseBy(+1)} >
                   +
             </button>
-            
+             
+            {/* <button onClick={() => { console.log(product.state), changeProductState("back",product) }} >
+                Back
+            </button>
+               <button onClick={() => { console.log(product.state), changeProductState("next",product) }} >
+               Next 
+            </button>
+             */}
+            </div>
         </div>
+            
     )
 }
+
+// <button  onClick={() => { console.log(product.state),changeProductState( "back" ,product), increaseBy(1)}} >
+//             -
+//         </button>
+//         <div >
+//             {counter}
+//         </div>
+//         <button onClick={() => { console.log(product.state),changeProductState("next",product), increaseBy(+1)}} >
+//               +
+//         </button>

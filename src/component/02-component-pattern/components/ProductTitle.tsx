@@ -1,7 +1,6 @@
 import { useContext } from "react";
+import "../styles/custom-styles.css";
 import { ProductContext } from "./ProductCardFinal";
-
-import styles from "../styles/styles.module.css";
 
 export interface IProductTitleProps{
     title?: string,
@@ -17,7 +16,7 @@ export const ProductTitle = ({ title, subtitle, className, style } : IProductTit
 
     return (
         <div>
-            <h3 className={`${styles.productDescription} ${className} `}
+            <h3 className={`  ${className} productTitle  `}
                     style={style}        
                     >
                 {title ? title : product.title}

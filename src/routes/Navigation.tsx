@@ -20,10 +20,16 @@ export const Navigation = () => {
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<App />} />
-            {/* <Route path="teams" element={<Teams />}>
-              <Route path=":teamId" element={<Team />} />
-            </Route> */}
           </Route>
+          {/* <Route path="/cocina" element={<Cocina />}>
+            <Route index element={<Cocina />} />
+          </Route>
+          <Route path="/entregas" element={<Entregas />}>
+            <Route index element={<Entregas />} />
+          </Route>
+          <Route path="/caja" element={<Caja />}>
+            <Route index element={<Caja />} />
+          </Route> */}
         </Routes>
       </BrowserRouter>
     </>

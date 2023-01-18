@@ -10,14 +10,9 @@ h2 {
     background-color: red;
 }
 .productCard {
-    background-color: white;
-    border-radius: 15px;
-    color: black;
-    padding-bottom: 5px;
-    width: 250px;
-    margin-right: 5px;
-    margin-top: 5px;
+  @apply max-w-xl rounded-2xl p-10 m-3 space-y-4 
 }
+
 
 .productImg {
     border-radius: 15px 15px 0px 0px;
@@ -25,7 +20,6 @@ h2 {
 }
 
 .productDescription {
-    margin: 10px;
 }
 
 .buttonsContainer {
@@ -69,3 +63,4 @@ h2 {
 .buttonAdd:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
+

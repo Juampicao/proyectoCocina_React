@@ -16,7 +16,7 @@
 /* Los botones y los divs que contengan .custom-Button EN EL PADRE */
 .custom-buttons button, .custom-buttons div{
     color: white;
-    border-color: white
+    border-color: white;
 }
 
 
@@ -28,4 +28,36 @@
 
 .shopping-cart p , .shopping-cart h2{
     text-align: center;
+}
+
+
+/* ProductTitle */
+.productTitle{
+    @apply text-center font-bold text-2xl
+}
+
+/* ProductState */
+.productState{
+    @apply p-2 w-1/3 
+}
+
+/* ProductButtons */
+.productButtons{
+    @apply flex space-x-5 p-2 items-center
+}
+
+.productButtons button{
+    @apply border p-3 px-5
+}
+.parentProductButtons{
+    @apply grid place-items-center
+}
+
+/* ProductPrice */
+.productPrice{
+    @apply text-white
+}
+
+.productIngredients{
+    @apply bg-white text-black w-1/2
 }

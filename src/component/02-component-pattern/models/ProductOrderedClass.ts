@@ -27,11 +27,11 @@ import { Product, ProductOrdered } from "../interfaces/interfaces";
 
 export class ProductOrderdClass extends Product {
    
-    state: "preparacion" | "terminado" | null;
+    state: ProductOrdered["state"];
     orderNumber: number | null;
 
-    constructor(id: string, title : string = "", img: string = "", price: number = 0, state: ProductOrdered["state"]) {
-        super(id, title,img, price )
+    constructor(id: string, title : string = "", img: string = "", price: number = 0, ingredients:  string[] = [],  state: ProductOrdered["state"]) {
+        super(id, title,img, price, ingredients )
 
         this.state = state;
         this.orderNumber = randomNumber(1000,5000)

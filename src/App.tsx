@@ -1,29 +1,12 @@
 import "./App.css";
-import { ShoppingPage } from "./component/02-component-pattern/pages/ShoppingPage";
-import { Navigation } from "./routes/Navigation";
+import MainCocinaProyect from "./component/02-component-pattern/pages/MainCocinaProyect";
 
 const App = () => {
   return (
     <>
       <div className="bg-slate-200 p-10 min-h-full">
-        {/* <h1>Proyecto Cocina</h1> */}
-
-        <Navigation />
-        <div className="">
-          
-          <div className=" ">
-            <h1 className="text-2xl font-bold">Shopping Page</h1>
-            <ShoppingPage />
-          </div>
-
-          {/* <div className="bg-green-300 border">
-            <h1 className="text-2xl font-bold">Individual</h1>
-            <Caja/>
-            <Cocina />
-            <Entregas/>
-            </div> */}
-        </div>
-        </div>
+        <MainCocinaProyect/>
+      </div>
     </>
   )
 }

@@ -8,17 +8,23 @@ import styles from "../styles/styles.module.css";
 export const ProductContext = createContext({} as ProductContextProps ); 
 const { Provider } = ProductContext; // Proveedor de informacion
 
+// const  ProductContext = createContext({} as ProductContextProps); 
+// const { Provider } = ProductContext; // Proveedor de informacion
+
+
+
 
 // Product Card
 export const ProductCardFinal = ({ children, product, className, style, onChange, value }: ProductCardProps) => {
 
-    const {counter, increaseBy} = useProduct( {onChange, product, value} )
+    const {counter, increaseBy, changeProductState } = useProduct( {onChange, product, value} )
     
     return (
         <Provider value={{
             counter,
             increaseBy,
-            product
+            product,
+            changeProductState,
         }}>
             
             <div className={`${styles.productCard} ${className} `}
@@ -30,3 +36,5 @@ export const ProductCardFinal = ({ children, product, className, style, onChange
   )
 }
 
+// export { Provider };
+// export default ProductContext;

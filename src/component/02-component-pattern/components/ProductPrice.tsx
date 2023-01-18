@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import "../styles/custom-styles.css";
 import { ProductContext } from "./ProductCardFinal";
 
 
@@ -11,14 +12,16 @@ export interface IProductPriceProps{
 //  Product Button
 export const ProductPrice = ({className, style, price} : IProductPriceProps) => {
     
-    const { product } = useContext(ProductContext)
+    const { product , counter} = useContext(ProductContext)
     
     return (
-          <div className={`text-center text-black  bg-green-300 ${className} `}  style={style} >
-            <h1>
-                $ {price ? price : product.price}
-
-            </h1>
+          <div className={` ${className} productPrice `}  style={style} >
+            <div>
+              {price ? `Precio Unitario: ${price}` : <> <p> <span className="font-bold"> Precio Unitario:  $</span> { product.price} </p> </>}
+        </div>
+        
+        <p> Monto a Abonar : ${product.price * counter} </p>
+        <p> Cantidad : { counter} unidades </p>
           </div>
     )
 }

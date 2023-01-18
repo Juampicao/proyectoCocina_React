@@ -1,49 +1,49 @@
-import { useEffect, useState } from "react"
-import ProductCardFinal, { ProductButtons, ProductState, ProductTitle } from "../components"
+import { useEffect } from "react"
+import Contenedor from "../atoms/Contenedor"
+import Header from "../atoms/Header"
+import ProductCardFinal, { ProductButtonsState, ProductState, ProductTitle } from "../components"
+import { ProductIngredientsList } from "../components/ProductIngredientsList"
 import { useShoppingCart } from "../hooks/useShoppingCart"
-import { ProductInCart } from "../interfaces/interfaces"
 
 const Cocina = () => {
 
-   const { shoppingCart, onProductCountChange}  = useShoppingCart()
 
-    const [productList, setProductList] = useState<{ [key: string]: ProductInCart }>()
-
-    useEffect(() => {
-        setProductList(shoppingCart)
-    }, [shoppingCart])
+   const { shoppingCart, onProductCountChange, pedidosPreparacion}  = useShoppingCart()
     
-  return (
-     <div className="shopping-cart">
-                  <h1> Cocina </h1>
-                {
-                    Object.entries( productList).map(([key, product]) => (
+    useEffect(() => {
+      console.log("Cambio pedidos en preparacion" , pedidosPreparacion)
+    }, [pedidosPreparacion])
+    
+
+    return ( 
+        <>
+          <Contenedor className=''>
+            <Header title='Cocina'/>
+              {pedidosPreparacion?.map(product => (
+                    
+                    <ProductCardFinal
+                        product={product}
+                        key={product.id}
+                        className="bg-blue-400"
                         
-                        <ProductCardFinal
-                            product={product}
-                            key={key}
-                            className="bg-dark text-white"
-                            
-                            //Delete or comment onChange & value for not give control to the child. 
-                            onChange={onProductCountChange} 
-                            value={product.count}
-                        >
-                            <ProductState/>
+                        //Delete or comment onChange & value for not give control to the child. 
+                        onChange={onProductCountChange}
+                        value={ shoppingCart[product.id]?.count || 0 }
+                    >
                             <ProductTitle
-                                className="text-white bg-dark"
-                                title={product.title}
-                                subtitle={`Cantidad: ${product.count}`}
+                            className="text-white bg-dark"
+                            title={product.title}
+                            subtitle={`Cantidad: ${product.count}`}
                             /> 
-                            <ProductButtons className="custom-buttons"
-                            style={{
-                                display: "flex",
-                                justifyContent: "center"
-                            }}
-                        />
-                        </ProductCardFinal>
-                    ))
-                }
-            </div>
+                        <ProductState/> 
+                        <ProductIngredientsList/>
+                        <ProductButtonsState/>
+                        
+                    </ProductCardFinal>
+                ))
+              }
+            </Contenedor>
+      </>
   )
 }
 

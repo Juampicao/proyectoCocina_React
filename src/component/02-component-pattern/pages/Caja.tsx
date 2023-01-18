@@ -1,34 +1,47 @@
-import ProductCardFinal, { ProductButtons, ProductPrice, ProductTitle } from "../components"
-import { products } from "../data/products"
-import { useShoppingCart } from "../hooks/useShoppingCart"
+import { useContext, useEffect } from 'react';
+import Contenedor from '../atoms/Contenedor';
+import Header from '../atoms/Header';
+import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
+import { ProductContext } from '../components/ProductCardFinal';
+import { CustomLogger } from '../helpers/customLogger';
+import { useShoppingCart } from '../hooks/useShoppingCart';
+
+const customLogger = new CustomLogger(); 
 
 const Caja = () => {
 
-   const { shoppingCart, onProductCountChange}  = useShoppingCart()
+  const { shoppingCart, onProductCountChange, pedidosPagar}  = useShoppingCart()
+  
+  const { product } = useContext(ProductContext)
 
-    return (
-      <>
-        <h1> Caja </h1>
-        <hr />
-        <div style={({display: "flex", flexDirection: "row", flexWrap: "wrap" })}>
-                                
-            {products?.map(product => (
-    
+  useEffect(() => {
+    customLogger.logDebug("Caja.jsx, pedidosPagar:", pedidosPagar)
+    customLogger.logDebug("Caja.jsx, shoppingCart:", shoppingCart)
+
+  },[shoppingCart])
+  return (
+    <>
+      <Contenedor className=''>
+            <Header title='Caja'/>
+            {pedidosPagar?.map(product => (
+
                 <ProductCardFinal
-                className="bg-dark text-white"
-                key={product.id}
-                product={product}
-                onChange={onProductCountChange}
-                value={ shoppingCart[product.id]?.count || 0 }
+                    className="bg-red-900 "
+                    key={product.id}
+                    product={product}
+                    onChange={onProductCountChange}
+                    value={ shoppingCart[product.id]?.count || 0 }
                 >
-                    {/* <ProductImage className="custom-image"/> */}
-                    <ProductPrice />
-                    <ProductTitle  className="text-white bg-dark" /> 
-                    <ProductButtons className="custom-buttons" />
+                    {/* <ProductPrice /> */}
+                    <ProductTitle className="text-white bg-dark" /> 
+                    <ProductTitle title={`Pedido: ${product.orderNumber}`} /> 
+                    <ProductState/>
+                    <ProductButtonsState/>
+
                 </ProductCardFinal>
-            ))}      
-        </div>
-        </>
+            ))}       
+      </Contenedor>
+    </>
   )
 }
 

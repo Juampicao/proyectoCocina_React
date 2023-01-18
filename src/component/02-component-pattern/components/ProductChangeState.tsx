@@ -9,12 +9,14 @@ export interface IProductChangeStateProps{
 
 export const ProductChangeState = ({className, style} : IProductChangeStateProps) => {
     
-    const { product } = useContext(ProductContext)
+    const { increaseBy,  product } = useContext(ProductContext)
+
     
     const [isChecked, setIsChecked] = useState(false);
 
     const handleOnChange = () => {
-     setIsChecked(!isChecked);
+        setIsChecked(!isChecked);
+        increaseBy(+1)
     };
 
 
