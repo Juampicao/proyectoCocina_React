@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { Product, ProductInCart, ProductOrdered } from "../interfaces/interfaces"
 
-export const useShoppingCart = () => {
+export const useKitchenCart = () => {
     
-    const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({})
+    const [kitchenCart, setKitchenCart] = useState<{ [key: string]: ProductInCart }>({})
     
     const [pedidosDisponible, setPedidosDisponible] = useState< Product[] >([])
     const [pedidosPagar, setPedidosPagar] = useState< Product[] >([])
@@ -22,11 +22,11 @@ export const useShoppingCart = () => {
 
         console.log("[onProductCountChangeFn] Count:", count, product)
 
-        setShoppingCart(oldShoppingCart => {
+        setKitchenCart(oldKitchenCart => {
 
             if (count === 0) {
                 
-                const { [product.id] : toDelete , ...rest} = oldShoppingCart
+                const { [product.id] : toDelete , ...rest} = oldKitchenCart
 
                 console.log({toDelete})
                 return { ...rest }
@@ -63,7 +63,7 @@ export const useShoppingCart = () => {
             }
 
             return {
-                ...oldShoppingCart,
+                ...oldKitchenCart,
                 [ product.id ] : {...product,count}
             }
             
@@ -74,7 +74,7 @@ export const useShoppingCart = () => {
 
 
     return {
-        shoppingCart,
+        kitchenCart,
         onProductCountChange,
         pedidosDisponible,
         pedidosPagar,

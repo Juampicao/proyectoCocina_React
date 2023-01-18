@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
-import Contenedor from "../atoms/Contenedor"
-import Header from "../atoms/Header"
-import ProductCardFinal, { ProductButtonsState, ProductState, ProductTitle } from "../components"
-import { useShoppingCart } from "../hooks/useShoppingCart"
+import { useEffect, useState } from "react";
+import { Contenedor, Header } from '../atoms';
+
+import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
+import { useKitchenCart } from "../hooks/useKitchenCart";
 
 const Entregas = () => {
 
-  const { shoppingCart, onProductCountChange,  pedidosTerminados}  = useShoppingCart()
+  const { kitchenCart, onProductCountChange,  pedidosTerminados}  = useKitchenCart()
 
   const [pedidosTerminadosLocal, setPedidosTerminadosLocal] = useState<any[]>([])
   useEffect(() => {
@@ -24,7 +24,7 @@ const Entregas = () => {
                     key={product.id}
                     product={product}
                     onChange={onProductCountChange}
-                    value={ shoppingCart[product.id]?.count || 0 }
+                    value={ kitchenCart[product.id]?.count || 0 }
                 >
                     <ProductTitle title={`Pedido: ${product.orderNumber}`} /> 
                     <ProductTitle />

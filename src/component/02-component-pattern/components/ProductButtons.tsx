@@ -25,26 +25,10 @@ export const ProductButtons = ({className, style} : IProductButtonsProps) => {
             <button onClick={() => increaseBy(+1)} >
                   +
             </button>
-             
-            {/* <button onClick={() => { console.log(product.state), changeProductState("back",product) }} >
-                Back
-            </button>
-               <button onClick={() => { console.log(product.state), changeProductState("next",product) }} >
-               Next 
-            </button>
-             */}
+      
             </div>
         </div>
             
     )
 }
 
-// <button  onClick={() => { console.log(product.state),changeProductState( "back" ,product), increaseBy(1)}} >
-//             -
-//         </button>
-//         <div >
-//             {counter}
-//         </div>
-//         <button onClick={() => { console.log(product.state),changeProductState("next",product), increaseBy(+1)}} >
-//               +
-//         </button>

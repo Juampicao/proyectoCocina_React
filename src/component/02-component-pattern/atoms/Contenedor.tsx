@@ -1,5 +1,5 @@
 
-const Contenedor = ({children, className}: {children: any, className?: string}) => {
+export const Contenedor = ({children, className}: {children: any, className?: string}) => {
   return (
       <>
         <div className={`${className} p-5 m-5`}>
@@ -8,5 +8,3 @@ const Contenedor = ({children, className}: {children: any, className?: string}) 
       </>
   )
 }
-
-export default Contenedor

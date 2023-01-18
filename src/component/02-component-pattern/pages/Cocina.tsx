@@ -1,14 +1,13 @@
-import { useEffect } from "react"
-import Contenedor from "../atoms/Contenedor"
-import Header from "../atoms/Header"
-import ProductCardFinal, { ProductButtonsState, ProductState, ProductTitle } from "../components"
-import { ProductIngredientsList } from "../components/ProductIngredientsList"
-import { useShoppingCart } from "../hooks/useShoppingCart"
+import { useEffect } from "react";
+import { Contenedor, Header } from '../atoms';
+import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
+import { ProductIngredientsList } from "../components/ProductIngredientsList";
+import { useKitchenCart } from "../hooks/useKitchenCart";
 
 const Cocina = () => {
 
 
-   const { shoppingCart, onProductCountChange, pedidosPreparacion}  = useShoppingCart()
+   const { kitchenCart, onProductCountChange, pedidosPreparacion}  = useKitchenCart()
     
     useEffect(() => {
       console.log("Cambio pedidos en preparacion" , pedidosPreparacion)
@@ -28,7 +27,7 @@ const Cocina = () => {
                         
                         //Delete or comment onChange & value for not give control to the child. 
                         onChange={onProductCountChange}
-                        value={ shoppingCart[product.id]?.count || 0 }
+                        value={ kitchenCart[product.id]?.count || 0 }
                     >
                             <ProductTitle
                             className="text-white bg-dark"

@@ -1,7 +1,7 @@
 
 
 import { useContext } from "react";
-import CheckBoxComponent from "../atoms/checkbox2/CheckBoxComponent";
+import { CheckBoxComponent } from "../atoms";
 import "../styles/custom-styles.css";
 import { ProductContext } from "./ProductCardFinal";
 

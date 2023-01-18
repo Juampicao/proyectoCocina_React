@@ -8,11 +8,6 @@ import styles from "../styles/styles.module.css";
 export const ProductContext = createContext({} as ProductContextProps ); 
 const { Provider } = ProductContext; // Proveedor de informacion
 
-// const  ProductContext = createContext({} as ProductContextProps); 
-// const { Provider } = ProductContext; // Proveedor de informacion
-
-
-
 
 // Product Card
 export const ProductCardFinal = ({ children, product, className, style, onChange, value }: ProductCardProps) => {
@@ -36,5 +31,4 @@ export const ProductCardFinal = ({ children, product, className, style, onChange
   )
 }
 
-// export { Provider };
-// export default ProductContext;
+

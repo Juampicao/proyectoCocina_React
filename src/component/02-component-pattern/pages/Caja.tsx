@@ -1,26 +1,24 @@
-import { useContext, useEffect } from 'react';
-import Contenedor from '../atoms/Contenedor';
-import Header from '../atoms/Header';
+import { useEffect } from 'react';
+import { Contenedor, Header } from '../atoms';
 import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
-import { ProductContext } from '../components/ProductCardFinal';
-import { CustomLogger } from '../helpers/customLogger';
-import { useShoppingCart } from '../hooks/useShoppingCart';
+import { CustomLogger } from '../helpers/CustomLogger';
+import { useKitchenCart } from '../hooks/useKitchenCart';
 
 const customLogger = new CustomLogger(); 
 
 const Caja = () => {
 
-  const { shoppingCart, onProductCountChange, pedidosPagar}  = useShoppingCart()
-  
-  const { product } = useContext(ProductContext)
+   const { kitchenCart, onProductCountChange, pedidosPagar, pedidosDisponible, pedidosTerminados, pedidosPreparacion}  = useKitchenCart()
+
 
   useEffect(() => {
     customLogger.logDebug("Caja.jsx, pedidosPagar:", pedidosPagar)
-    customLogger.logDebug("Caja.jsx, shoppingCart:", shoppingCart)
-
-  },[shoppingCart])
+    customLogger.logDebug("Caja.jsx, kitchenCart:", kitchenCart)
+  }, [])
+  
   return (
     <>
+  
       <Contenedor className=''>
             <Header title='Caja'/>
             {pedidosPagar?.map(product => (
@@ -30,7 +28,7 @@ const Caja = () => {
                     key={product.id}
                     product={product}
                     onChange={onProductCountChange}
-                    value={ shoppingCart[product.id]?.count || 0 }
+                    value={ kitchenCart[product.id]?.count || 0 }
                 >
                     {/* <ProductPrice /> */}
                     <ProductTitle className="text-white bg-dark" /> 
@@ -41,8 +39,11 @@ const Caja = () => {
                 </ProductCardFinal>
             ))}       
       </Contenedor>
+      
     </>
   )
 }
 
 export default Caja
+
+

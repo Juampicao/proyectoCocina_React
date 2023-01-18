@@ -11,7 +11,7 @@ export const NavigationCocina = () => {
   return (
     <>
       <BrowserRouter>
-        <>
+
           <Routes>
             <Route path="/" element={<Layout />}>
 
@@ -26,7 +26,7 @@ export const NavigationCocina = () => {
             </Route>
             
           </Routes>
-        </>
+          
       </BrowserRouter>
     </>
   );

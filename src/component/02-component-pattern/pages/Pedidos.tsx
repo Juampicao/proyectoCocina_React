@@ -1,12 +1,12 @@
-import Contenedor from '../atoms/Contenedor'
-import Header from '../atoms/Header'
-import ProductCardFinal, { ProductButtons, ProductButtonsState, ProductIngredients, ProductState, ProductTitle } from '../components'
-import { productsOrderedList } from '../data/products'
-import { useShoppingCart } from '../hooks/useShoppingCart'
+import { Contenedor, Header } from '../atoms';
+
+import ProductCardFinal, { ProductButtons, ProductButtonsState, ProductIngredients, ProductState, ProductTitle } from '../components';
+import { productsOrderedList } from '../data/products';
+import { useKitchenCart } from '../hooks/useKitchenCart';
 
 const Pedidos = () => {
 
-   const { shoppingCart, onProductCountChange, pedidosDisponible}  = useShoppingCart()
+   const { kitchenCart, onProductCountChange, pedidosDisponible}  = useKitchenCart()
 
   return (
         <>
@@ -19,7 +19,7 @@ const Pedidos = () => {
                             key={product.id}
                             product={product}
                             onChange={onProductCountChange}
-                            value={ shoppingCart[product.id]?.count || 0 }
+                            value={ kitchenCart[product.id]?.count || 0 }
                         >
                             <ProductTitle  /> 
                             <ProductState/>

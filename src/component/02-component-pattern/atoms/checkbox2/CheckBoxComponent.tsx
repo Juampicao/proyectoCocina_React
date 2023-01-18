@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../components/ProductCardFinal";
 
 
-const CheckBoxComponent = ({checkboxList} : {checkboxList : string[]}) => {
+export const CheckBoxComponent = ({checkboxList} : {checkboxList : string[]}) => {
 
     const { product } = useContext(ProductContext)
 
@@ -60,4 +60,3 @@ const CheckBoxComponent = ({checkboxList} : {checkboxList : string[]}) => {
     )
 }
     
-export default CheckBoxComponent

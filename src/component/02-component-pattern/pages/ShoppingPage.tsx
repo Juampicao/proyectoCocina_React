@@ -1,30 +1,32 @@
 import { useEffect } from "react";
+import { CustomLogger } from "../../axios/helpers/CustomLogger";
+import { Header } from "../atoms";
 import { ProductButtons, ProductCardFinal, ProductPrice, ProductState, ProductTitle } from "../components";
 import { ProductButtonsState } from "../components/ProductButtonsState";
 import { ProductIngredients } from "../components/ProductIngredients";
 import { ProductIngredientsList } from "../components/ProductIngredientsList";
 import { productsOrderedList } from "../data/products";
-import { useShoppingCart } from "../hooks/useShoppingCart";
+import { useKitchenCart } from "../hooks/useKitchenCart";
 import "../styles/custom-styles.css";
 import "../styles/styles.module.css";
 
+const customLogger = new CustomLogger(); 
+
 export const ShoppingPage = () => {
     
-   const { shoppingCart, onProductCountChange, pedidosPagar, pedidosDisponible, pedidosTerminados, pedidosPreparacion}  = useShoppingCart()
+   const { kitchenCart, onProductCountChange, pedidosPagar, pedidosDisponible, pedidosTerminados, pedidosPreparacion}  = useKitchenCart()
     
-
-
     useEffect(() => {
-      console.log("Cambio pedidos en preparacion" , pedidosPreparacion)
+      customLogger.logDebug("Cambio pedidos en preparacion" , pedidosPreparacion)
     }, [pedidosPreparacion])
 
 
   return (
         <div className="grid gap-y-10 bg-red">
             
-            {/* Pedidos */}
-            <div>
-            <h1 className="text-xl text-blue-500 font-bold"> Pedidos </h1>
+        {/* Pedidos */}
+          <div>
+            <Header title="Pedidos"/>
             {productsOrderedList?.map(product => (
             // {pedidosDisponible?.map(product => (
                 <ProductCardFinal
@@ -32,7 +34,7 @@ export const ShoppingPage = () => {
                     key={product.id}
                     product={product}
                     onChange={onProductCountChange}
-                    value={ shoppingCart[product.id]?.count || 0 }
+                    value={ kitchenCart[product.id]?.count || 0 }
                 >
                     <ProductTitle  /> 
                     <ProductState/>
@@ -42,12 +44,12 @@ export const ShoppingPage = () => {
                 </ProductCardFinal>
             ))}              
             </div>
-            {/* Pedidos */}
+        {/* Pedidos */}
               
           
-            {/* Caja */}
+        {/* Caja */}
             <div>
-                <h1 className="text-xl text-blue-500 font-bold"> Caja </h1>
+                <Header title="Caja"/>
                 {pedidosPagar?.map(product => (
 
                 <ProductCardFinal
@@ -55,7 +57,7 @@ export const ShoppingPage = () => {
                     key={product.id}
                     product={product}
                     onChange={onProductCountChange}
-                    value={ shoppingCart[product.id]?.count || 0 }
+                    value={ kitchenCart[product.id]?.count || 0 }
                 >
                     <ProductPrice />
                     <ProductTitle className="text-white bg-dark" /> 
@@ -66,12 +68,12 @@ export const ShoppingPage = () => {
                 </ProductCardFinal>
             ))}              
             </div>
-            {/* Caja */}
+        {/* Caja */}
           
-            {/* COCINA */}
+        {/* COCINA */}
             <div className="shopping-cart">
-                <h1 className="text-xl text-blue-500 font-bold"> Cocina </h1>
-    
+                <Header title="Cocina"/>
+
                     {pedidosPreparacion?.map(product => (
                         
                         <ProductCardFinal
@@ -80,9 +82,9 @@ export const ShoppingPage = () => {
                             className="bg-blue-400"
                             //Delete or comment onChange & value for not give control to the child. 
                             onChange={onProductCountChange}
-                            value={ shoppingCart[product.id]?.count || 0 }
+                            value={ kitchenCart[product.id]?.count || 0 }
                         >
-                             <ProductTitle
+                            <ProductTitle
                                 className="text-white bg-dark"
                                 title={product.title}
                                 subtitle={`Cantidad: ${product.count}`}
@@ -94,14 +96,15 @@ export const ShoppingPage = () => {
                         </ProductCardFinal>
                     ))
                 }
-              </div>
-             {/* COCINA */}
+            </div>
+        {/* COCINA */}
               
           
 
-          {/* ENTREGAS */}
+        {/* ENTREGAS */}
            <div>
-            <h1 className="text-xl text-blue-500 font-bold"> Pedidos </h1>
+            <Header title="Pedidos"/>
+
             {pedidosTerminados?.map(product => (
 
                 <ProductCardFinal
@@ -109,7 +112,7 @@ export const ShoppingPage = () => {
                     key={product.id}
                     product={product}
                     onChange={onProductCountChange}
-                    value={ shoppingCart[product.id]?.count || 0 }
+                    value={ kitchenCart[product.id]?.count || 0 }
                 >
                     <ProductTitle title={`Pedido: ${product.orderNumber}`} /> 
                     <ProductTitle />
@@ -120,7 +123,7 @@ export const ShoppingPage = () => {
             ))}              
           </div>
           
-             {/* ENTREGAS */}
+        {/* ENTREGAS */}
             
           
            
