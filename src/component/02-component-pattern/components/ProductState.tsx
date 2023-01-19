@@ -26,7 +26,7 @@ export const ProductState = ({className, style, state} : IProductStateProps) => 
     return (
           <div className={` ${stateProductColor[product.state]}  ${className}  productState `}  style={style} >
             
-            {state ? `Estado: ${state}` : <> <p> <span className="font-bold"> Estado: </span> { product.state} </p> </>}
+            {state ? `Estado: ${state}` : <> <p> <span className="font-bold "> Estado: </span> { product.state} </p> </>}
 
           </div>
     )

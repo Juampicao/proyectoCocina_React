@@ -2,18 +2,19 @@ import { useEffect } from 'react';
 import { Contenedor, Header } from '../atoms';
 import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
 import { CustomLogger } from '../helpers/CustomLogger';
-import { useKitchenCart } from '../hooks/useKitchenCart';
+import useKitchenProvider from '../hooks/useKitchenProvider';
 
 const customLogger = new CustomLogger(); 
 
 const Caja = () => {
 
-   const { kitchenCart, onProductCountChange, pedidosPagar, pedidosDisponible, pedidosTerminados, pedidosPreparacion}  = useKitchenCart()
+  //  const { kitchenCart, onProductCountChange, pedidosPagar, pedidosDisponible, pedidosTerminados, pedidosPreparacion}  = useKitchenCart()
 
+  const { pedidosPagar, onProductCountChange, kitchenCart } = useKitchenProvider()
 
   useEffect(() => {
     customLogger.logDebug("Caja.jsx, pedidosPagar:", pedidosPagar)
-    customLogger.logDebug("Caja.jsx, kitchenCart:", kitchenCart)
+    // customLogger.logDebug("Caja.jsx, kitchenCart:", kitchenCart)
   }, [])
   
   return (

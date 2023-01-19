@@ -14,19 +14,23 @@ export const ProductButtons = ({className, style} : IProductButtonsProps) => {
     
     return (
         <div className="parentProductButtons">
-
-          <div className={` ${className} productButtons`}  style={style} >
-            <button  onClick={() =>  increaseBy(-1)} >
-                -
-            </button>
-            <div >
-                {counter}
+            {
+                    
+            <div className={` ${className} productButtons`} style={style} >
+                <p>Cantidad: </p>
+                <button  onClick={() =>  increaseBy(-1)} >
+                    -
+                </button>
+                <div >
+                    {counter}
+                </div>
+                <button onClick={() => increaseBy(+1)} >
+                    +
+                </button>
+        
             </div>
-            <button onClick={() => increaseBy(+1)} >
-                  +
-            </button>
-      
-            </div>
+            }
+            
         </div>
             
     )

@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { ProductContext } from "../context/KitchenProvider";
+import { KitchenContext } from "../context/KitchenProvider";
 
 const useKitchenProvider = () => {
-    return useContext(ProductContext);
+    return useContext(KitchenContext);
 }
 
 export default useKitchenProvider;

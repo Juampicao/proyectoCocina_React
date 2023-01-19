@@ -19,22 +19,6 @@ export interface ProductCardProps{
     value?: number;
 }
 
-// Interfaz Product State
-export interface IProductState{
-    state : 'preparacion' | 'terminado' | null
-}
-
-
-// Interfaz Product
-// export interface Product {
-//     id: string,
-//     title: string;
-//     img?: string;
-//     price: number
-//     [x: string]: any; 
-//     // state: 'preparacion' | 'terminado' | null
-//     // orderNumber: number  | null
-// }
 
 export class Product {
     id: string;
@@ -63,6 +47,8 @@ export interface ProductOrdered  extends Product{
 export interface changeProductStateProps{
     type:  "back"| "next"
 }
+
+
 // Create Context
 export interface ProductContextProps{
     counter: number,

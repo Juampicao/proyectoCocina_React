@@ -18,10 +18,9 @@ export const ProductIngredients = ({className, style, ingredients} : IProductIng
     const { product } = useContext(ProductContext)
  
     return (
-          <div className={` ${className} productIngredients `}  style={style} >
+          <div className={` ${className} productIngredients  `}  style={style} >
             <h1 className="font-bold text-center"> Ingredientes </h1>
-            
-            <CheckBoxComponent checkboxList={product.ingredients}/>
+            <CheckBoxComponent  checkboxList={product.ingredients}/>
           </div>
     )
 }

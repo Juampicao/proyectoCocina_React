@@ -55,9 +55,12 @@ export const useProduct = ( {onChange, product,value = 0} : useProductArgs) => {
         onChange && onChange({count: counter, product});
     }
 
+
+    // Todo agregar el product.state
     useEffect(() => {
       setCounter(value)
-    }, [value, product.state])
+    // }, [value, product.state]) 
+    }, [value])
     
 
     return {counter, increaseBy, changeProductState}

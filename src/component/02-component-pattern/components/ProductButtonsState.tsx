@@ -13,10 +13,11 @@ export const ProductButtonsState = ({className, style} : IProductButtonsStatePro
     const {  product, changeProductState } = useContext(ProductContext)
     
     return (
-        <div className="parentProductButtons">
-
-          <div className={` ${className} productButtons`}  style={style} >
-             
+        <div className="parentProductButtonsState">
+            {/* {
+                product.ingredients.length === 0 && */}
+          <div className={` ${className} productButtonsState `}  style={style} >
+             <p> Estado: </p>
             <button onClick={() => { console.log(product.state), changeProductState("back",product) }} >
                 Back
             </button>
@@ -24,7 +25,9 @@ export const ProductButtonsState = ({className, style} : IProductButtonsStatePro
                Next 
             </button>
             
-            </div>
+                </div>
+            {/* } */}
+            
         </div>
             
     )

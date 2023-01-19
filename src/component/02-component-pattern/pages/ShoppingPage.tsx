@@ -10,9 +10,15 @@ import { useKitchenCart } from "../hooks/useKitchenCart";
 import "../styles/custom-styles.css";
 import "../styles/styles.module.css";
 
+import Sonido from "../assets/sonidoNotificacion.mp3";
 const customLogger = new CustomLogger(); 
 
 export const ShoppingPage = () => {
+
+    function playAudio() {
+        new Audio(Sonido).play();
+    }
+
     
    const { kitchenCart, onProductCountChange, pedidosPagar, pedidosDisponible, pedidosTerminados, pedidosPreparacion}  = useKitchenCart()
     
@@ -21,39 +27,44 @@ export const ShoppingPage = () => {
     }, [pedidosPreparacion])
 
 
+    
   return (
-        <div className="grid gap-y-10 bg-red">
-            
+    <div className="bg-red-600 grid grid-cols-2 grid-rows-2">
+          {/* <button onClick={() => playAudio()}> Sonido</button>   */}
         {/* Pedidos */}
-          <div>
+        <div>
             <Header title="Pedidos"/>
+            <div className="grid grid-cols-2">
+                  
             {productsOrderedList?.map(product => (
             // {pedidosDisponible?.map(product => (
                 <ProductCardFinal
-                    className="bg-dark text-white "
+                    className="bg-dark text-white  p-3"
                     key={product.id}
                     product={product}
                     onChange={onProductCountChange}
                     value={ kitchenCart[product.id]?.count || 0 }
                 >
                     <ProductTitle  /> 
-                    <ProductState/>
+                    <ProductState />
                     <ProductIngredients />
-                    <ProductButtons className="custom-buttons" />
-                    <ProductButtonsState/>
+                    <ProductButtons  />
+                    <ProductButtonsState />
                 </ProductCardFinal>
-            ))}              
-            </div>
+            ))}             
+            </div>      
+        </div>
         {/* Pedidos */}
               
           
         {/* Caja */}
-            <div>
-                <Header title="Caja"/>
+          <div>
+              <Header title="Caja" />
+            <div className="grid grid-cols-2">
                 {pedidosPagar?.map(product => (
 
                 <ProductCardFinal
-                    className="bg-red-900 "
+                    className="bg-red-900  p-3"
                     key={product.id}
                     product={product}
                     onChange={onProductCountChange}
@@ -68,12 +79,15 @@ export const ShoppingPage = () => {
                 </ProductCardFinal>
             ))}              
             </div>
+        </div>
         {/* Caja */}
           
         {/* COCINA */}
-            <div className="shopping-cart">
+          {/* <div className="shopping-cart"> */}
+            <div>  
                 <Header title="Cocina"/>
-
+                <div className="grid grid-cols-2">
+                
                     {pedidosPreparacion?.map(product => (
                         
                         <ProductCardFinal
@@ -95,7 +109,8 @@ export const ShoppingPage = () => {
                            
                         </ProductCardFinal>
                     ))
-                }
+                  }
+                </div>
             </div>
         {/* COCINA */}
               
@@ -104,7 +119,8 @@ export const ShoppingPage = () => {
         {/* ENTREGAS */}
            <div>
             <Header title="Pedidos"/>
-
+            <div className="grid grid-cols-2">
+                    
             {pedidosTerminados?.map(product => (
 
                 <ProductCardFinal
@@ -122,12 +138,12 @@ export const ShoppingPage = () => {
                 </ProductCardFinal>
             ))}              
           </div>
-          
+        </div>
         {/* ENTREGAS */}
             
           
            
-        </div>
+    </div>
   )
 }
 
