@@ -4,6 +4,7 @@ import { Product, ProductInCart, ProductOrdered } from "../interfaces/interfaces
 
 
 const PedidoDisponibleInicial = productsOrderedList;
+
 export const useKitchenCart = () => {
     
     const [kitchenCart, setKitchenCart] = useState<{ [key: string]: ProductInCart }>({})
@@ -25,14 +26,6 @@ export const useKitchenCart = () => {
     }, [])
     
     
-    function changeListStatesProducts( product : any) {
-        if (product.state === "pagar") {
-            let findIndex = pedidosPagar.findIndex(product);
-            console.log("el index es: ", findIndex)
-        }
-    }
-
-
     const onProductCountChange = ({count, product, state} : onProductCountChangeProps) => {
 
         console.log("[onProductCountChangeFn] Count:", count, product)
@@ -56,7 +49,6 @@ export const useKitchenCart = () => {
             }
 
             if (product.state === "pagar") {
-                changeListStatesProducts(product);
                 setPedidosPagar(oldProducts => [...oldProducts, product])
                 let pedidosPreparacionNew = pedidosPreparacion.filter((product) =>  product.state === "preparacion")
                 setPedidosPreparacion(pedidosPreparacionNew);

@@ -4,8 +4,7 @@ import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } fro
 import { ProductIngredientsList } from "../components/ProductIngredientsList";
 import { useKitchenCart } from "../hooks/useKitchenCart";
 
-const Cocina = () => {
-
+export const Cocina = () => {
 
    const { kitchenCart, onProductCountChange, pedidosPreparacion}  = useKitchenCart()
     
@@ -45,5 +44,3 @@ const Cocina = () => {
       </>
   )
 }
-
-export default Cocina

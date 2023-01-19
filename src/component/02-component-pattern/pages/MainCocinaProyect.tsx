@@ -1,6 +1,6 @@
 import { NavigationCocina } from '../routes/NavigationCocina'
 
-const MainCocinaProyect = () => {
+export const MainCocinaProyect = () => {
   return (
       <>
         <NavigationCocina/>  

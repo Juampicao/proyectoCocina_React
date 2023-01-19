@@ -4,7 +4,7 @@ import { Contenedor, Header } from '../atoms';
 import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
 import { useKitchenCart } from "../hooks/useKitchenCart";
 
-const Entregas = () => {
+export const Entregas = () => {
 
   const { kitchenCart, onProductCountChange,  pedidosTerminados}  = useKitchenCart()
 
@@ -37,5 +37,3 @@ const Entregas = () => {
       </>          
   )
 }
-
-export default Entregas

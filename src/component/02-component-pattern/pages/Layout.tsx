@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom"
 
-const Layout = () => {
+export const Layout = () => {
     return (
         <>
             <ul className="bg-black text-white text-xl p-2 text-center space-x-20 top-0 fixed w-full">
@@ -14,5 +14,3 @@ const Layout = () => {
         </>
   )
 }
-
-export default Layout

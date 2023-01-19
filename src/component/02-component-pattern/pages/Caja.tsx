@@ -6,7 +6,7 @@ import useKitchenProvider from '../hooks/useKitchenProvider';
 
 const customLogger = new CustomLogger(); 
 
-const Caja = () => {
+export const Caja = () => {
 
   //  const { kitchenCart, onProductCountChange, pedidosPagar, pedidosDisponible, pedidosTerminados, pedidosPreparacion}  = useKitchenCart()
 
@@ -45,6 +45,5 @@ const Caja = () => {
   )
 }
 
-export default Caja
 
 

@@ -4,14 +4,14 @@ import ProductCardFinal, { ProductButtons, ProductButtonsState, ProductIngredien
 import { productsOrderedList } from '../data/products';
 import { useKitchenCart } from '../hooks/useKitchenCart';
 
-const Pedidos = () => {
+export const Pedidos = () => {
 
    const { kitchenCart, onProductCountChange, pedidosDisponible}  = useKitchenCart()
 
   return (
         <>
           <Contenedor className=''>
-            <Header title='Pedidos'/>
+            <Header title='Pedidos'/> 
                 {productsOrderedList?.map(product => (
                     // {pedidosDisponible?.map(product => (
                         <ProductCardFinal
@@ -32,5 +32,3 @@ const Pedidos = () => {
         </>
   )
 }
-
-export default Pedidos
