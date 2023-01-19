@@ -30,7 +30,6 @@ export const ShoppingPage = () => {
     
   return (
     <div className="bg-red-600  grid grid-cols-2 grid-rows-2">
-        {/* <button onClick={() => playAudio()}> Sonido</button>   */}
         {/* Pedidos */}
         <div>
             <Header title="Pedidos"/>

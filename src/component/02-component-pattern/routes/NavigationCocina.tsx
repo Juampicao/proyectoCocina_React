@@ -1,7 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Caja, Cocina, Entregas, Layout, Pedidos } from "../pages";
-
-import { ShoppingPage } from "../pages/ShoppingPage";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import KitchenProvider from "../context/KitchenProvider";
+import { Caja, Cocina, Entregas, Layout, Pedidos, ShoppingPage } from "../pages";
 
 
 export const NavigationCocina = () => {
@@ -9,39 +8,29 @@ export const NavigationCocina = () => {
     <>
       <BrowserRouter>
         
-        <Routes>
-            <Route path="/" element={<Layout />}>
-              
-              <Route path="/general" element={<ShoppingPage />}/>                
-              <Route path="/pedidos" element={<Pedidos />}/>                
-              <Route path="/cocina" element={<Cocina />}/>                
-              <Route path="/entregas" element={<Entregas />}/>
-              <Route path="/caja" element={<Caja />}/>
-            </Route>
-            
-        </Routes>
-        
-
-        {/* <KitchenProvider> */}
+        <KitchenProvider>
           <Routes>
-            <Route path="/" element={<Layout />}>
-              
-                {/* <Route path="/general" element={<ShoppingPage />}/>                
-                
-                <Route path="/pedidos" element={<Pedidos />}/>                
+              <Route path="/" element={<Layout />}>
+                              
+                <Route path="/pedidos" index element={<Pedidos />}/>                
                 <Route path="/cocina" element={<Cocina />}/>                
                 <Route path="/entregas" element={<Entregas />}/>
-                <Route path="/caja" element={<Caja />}/>
-              
-              
-                <Route path="*" element={<h1> Pagina no encontrada. </h1>} />    */}
-
+                <Route path="/caja" element={<Caja />} />
+                
+                {/* Pagina Desconocida */}               
+                <Route path="*" element={<Navigate to="/pedidos" />} />
             </Route>
           </Routes>
+        </KitchenProvider>  
+        
 
-
-        {/* </KitchenProvider>   */}
-          
+          <Routes>
+           
+            <Route path="/general" element={<Layout />}>
+              <Route path="/general" index element={<ShoppingPage />}/>                      
+            </Route>
+          </Routes>
+        
       </BrowserRouter>
     </>
   );

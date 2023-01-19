@@ -2,11 +2,15 @@ import { useEffect } from "react";
 import { Contenedor, Header } from '../atoms';
 import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
 import { ProductIngredientsList } from "../components/ProductIngredientsList";
-import { useKitchenCart } from "../hooks/useKitchenCart";
+import useKitchenProvider from "../hooks/useKitchenProvider";
 
 export const Cocina = () => {
 
-   const { kitchenCart, onProductCountChange, pedidosPreparacion}  = useKitchenCart()
+  //? Hook Local
+  // const { kitchenCart, onProductCountChange, pedidosPreparacion } = useKitchenCart()
+ 
+  //? Context
+  const { kitchenCart, onProductCountChange , pedidosPreparacion} = useKitchenProvider()
     
     useEffect(() => {
       console.log("Cambio pedidos en preparacion" , pedidosPreparacion)

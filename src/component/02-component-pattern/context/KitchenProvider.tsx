@@ -2,13 +2,14 @@ import { createContext } from "react";
 import { useKitchenCart } from "../hooks/useKitchenCart";
 import { useProduct } from "../hooks/useProduct";
 import { Product } from "../interfaces/interfaces";
-import { ProductOrderdClass } from "../models/ProductOrderedClass";
 
 interface KitchenContextProps{
     pedidosPagar: Product[],
     pedidosDisponible : Product[],
     pedidosPreparacion: Product[],
     pedidosTerminados: Product[],
+    kitchenCart: any,
+    onProductCountChange: any
     [x: string]: any;
 }
 
@@ -26,18 +27,12 @@ interface Props{
     value?: any,
 }
 
-const ProductExample3 = new ProductOrderdClass("3", "Ñoquis", "./coffee-mug.png", 980, ["Queso Rayado", "Salsa Bolognesa"], "disponible")
+// const ProductExample3 = new ProductOrderdClass("3", "Ñoquis", "./coffee-mug.png", 980, ["Queso Rayado", "Salsa Bolognesa"], "disponible")
 
 
 const KitchenProvider = ({ children, product, className, style, onChange, value }: Props ) => {
     
-    // const [kitchenCart, setKitchenCart] = useState<{ [key: string]: ProductInCart }>({})
-    
-    // const [pedidosDisponible, setPedidosDisponible] = useState< ProductOrderdClass[] >([])
-    // const [pedidosPagar, setPedidosPagar] = useState< ProductOrderdClass[] >([ProductExample3])
-    // const [pedidosPreparacion, setPedidosPreparacion] = useState< ProductOrderdClass[] >([])
-    // const [pedidosTerminados, setPedidosTerminados] = useState< ProductOrderdClass[] >([])
-    
+
     const {counter, increaseBy, changeProductState } = useProduct( {onChange, product, value} )
 
     const { kitchenCart,
@@ -45,7 +40,8 @@ const KitchenProvider = ({ children, product, className, style, onChange, value 
         pedidosDisponible,
         pedidosPagar,
         pedidosPreparacion,
-        pedidosTerminados
+        pedidosTerminados,
+        pedidosTerminadosStorage,
     } = useKitchenCart()
     
     return (
@@ -60,6 +56,7 @@ const KitchenProvider = ({ children, product, className, style, onChange, value 
             pedidosPagar,
             pedidosPreparacion,
             pedidosTerminados,
+            pedidosTerminadosStorage,
         }}>
             {children}
         </Provider>

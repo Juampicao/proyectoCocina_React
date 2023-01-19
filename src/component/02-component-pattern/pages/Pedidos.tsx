@@ -2,12 +2,16 @@ import { Contenedor, Header } from '../atoms';
 
 import ProductCardFinal, { ProductButtons, ProductButtonsState, ProductIngredients, ProductState, ProductTitle } from '../components';
 import { productsOrderedList } from '../data/products';
-import { useKitchenCart } from '../hooks/useKitchenCart';
+import useKitchenProvider from '../hooks/useKitchenProvider';
 
 export const Pedidos = () => {
+    
+    //? Hook Local
+    // const { kitchenCart, onProductCountChange, pedidosDisponible}  = useKitchenCart()
 
-   const { kitchenCart, onProductCountChange, pedidosDisponible}  = useKitchenCart()
-
+    //? Context
+    const { kitchenCart, onProductCountChange } = useKitchenProvider()
+    
   return (
         <>
           <Contenedor className=''>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Contenedor, Header } from '../atoms';
-import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
+import { ProductButtonsState, ProductCardFinal, ProductPrice, ProductState, ProductTitle } from "../components";
 import { CustomLogger } from '../helpers/CustomLogger';
 import useKitchenProvider from '../hooks/useKitchenProvider';
 
@@ -8,8 +8,10 @@ const customLogger = new CustomLogger();
 
 export const Caja = () => {
 
+  //? Hook Local
   //  const { kitchenCart, onProductCountChange, pedidosPagar, pedidosDisponible, pedidosTerminados, pedidosPreparacion}  = useKitchenCart()
 
+  //? Context
   const { pedidosPagar, onProductCountChange, kitchenCart } = useKitchenProvider()
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export const Caja = () => {
                     onChange={onProductCountChange}
                     value={ kitchenCart[product.id]?.count || 0 }
                 >
-                    {/* <ProductPrice /> */}
+                    <ProductPrice />
                     <ProductTitle className="text-white bg-dark" /> 
                     <ProductTitle title={`Pedido: ${product.orderNumber}`} /> 
                     <ProductState/>
