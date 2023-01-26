@@ -3,6 +3,7 @@ import { Contenedor, Header } from '../atoms';
 import Sonido from "../assets/sonidoNotificacion.mp3";
 import { ProductButtonsState, ProductCardFinal, ProductState, ProductTitle } from "../components";
 import useKitchenProvider from "../hooks/useKitchenProvider";
+import { Product } from '../interfaces/interfaces';
 
 export const Entregas = () => {
 
@@ -11,26 +12,19 @@ export const Entregas = () => {
   // const { kitchenCart, onProductCountChange,  pedidosTerminados}  = useKitchenCart()
 
   //? Context
-  const { kitchenCart, onProductCountChange , pedidosTerminados, pedidosTerminadosStorage} = useKitchenProvider()
+  const { kitchenCart, onProductCountChange , pedidosTerminados} = useKitchenProvider()
 
   function playAudio() {
       new Audio(Sonido).play();
   }
 
-  // useEffect(() => {
-  //   playAudio()
-  // }, [pedidosTerminados])
-  
-
 
   return (
       <>
       <Contenedor className=''>
-
         
             <Header title='Entregas'/>
-            {/* {pedidosTerminados?.map((product : any) => ( */}
-            {pedidosTerminadosStorage?.map((product : any) => (
+            {pedidosTerminados?.map((product : Product) => (
 
                 <ProductCardFinal
                     className="bg-green-600 text-white p-2"

@@ -41,7 +41,6 @@ const KitchenProvider = ({ children, product, className, style, onChange, value 
         pedidosPagar,
         pedidosPreparacion,
         pedidosTerminados,
-        pedidosTerminadosStorage,
     } = useKitchenCart()
     
     return (
@@ -56,7 +55,6 @@ const KitchenProvider = ({ children, product, className, style, onChange, value 
             pedidosPagar,
             pedidosPreparacion,
             pedidosTerminados,
-            pedidosTerminadosStorage,
         }}>
             {children}
         </Provider>

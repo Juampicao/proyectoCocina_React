@@ -21,7 +21,7 @@ export const Cocina = () => {
         <>
           <Contenedor className=''>
             <Header title='Cocina'/>
-              {pedidosPreparacion?.map(product => (
+              {pedidosPreparacion?.map(product  => (
                     
                     <ProductCardFinal
                         product={product}

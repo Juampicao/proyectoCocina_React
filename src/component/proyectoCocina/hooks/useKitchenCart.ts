@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { productsOrderedList } from "../data/products";
 import { Product, ProductInCart, ProductOrdered } from "../interfaces/interfaces";
-import { useLocalStorage } from "./useLocalStorage";
 
 
 const PedidoDisponibleInicial = productsOrderedList;
@@ -16,20 +15,14 @@ export const useKitchenCart = () => {
     const [pedidosPreparacion, setPedidosPreparacion] = useState< Product[] >([])
     const [pedidosTerminados, setPedidosTerminados] = useState< Product[] >([])
     
-
-    const [pedidosTerminadosStorage, setPedidosTerminadosStorage] = useLocalStorage("pedidosTerminados", ""); 
-
-
+    
     interface onProductCountChangeProps{
         count: number,
         product: ProductOrdered,
         state?: ProductOrdered["state"];
     }
 
-    useEffect(() => {
-        setPedidosTerminadosStorage(pedidosTerminados)
-    }, [])
-    
+
     
     const onProductCountChange = ({count, product, state} : onProductCountChangeProps) => {
 
@@ -93,6 +86,5 @@ export const useKitchenCart = () => {
         pedidosPagar,
         pedidosPreparacion,
         pedidosTerminados,
-        pedidosTerminadosStorage,
     }
 }

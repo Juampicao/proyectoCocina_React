@@ -19,7 +19,6 @@ const INITIAL_STATE: IAxiosState = {
 const useAxios = () => {
 
   const [state, dispatch] = useReducer(axiosReducer, INITIAL_STATE);
-  // const [state, dispatch] = useReducer<any>(axiosReducer,INITIAL_STATE );
  
   /**
    * Axios request. 

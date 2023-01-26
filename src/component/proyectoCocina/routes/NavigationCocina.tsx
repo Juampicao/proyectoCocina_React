@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import KitchenProvider from "../context/KitchenProvider";
-import { Caja, Cocina, Entregas, Layout, Pedidos, ShoppingPage } from "../pages";
+import { Caja, Cocina, Entregas, Layout, Pedidos } from "../pages";
 
 
 export const NavigationCocina = () => {
@@ -24,13 +24,13 @@ export const NavigationCocina = () => {
         </KitchenProvider>  
         
 
-          <Routes>
+          {/* <Routes>
            
             <Route path="/general" element={<Layout />}>
               <Route path="/general" index element={<ShoppingPage />}/>                      
             </Route>
           </Routes>
-        
+         */}
       </BrowserRouter>
     </>
   );
